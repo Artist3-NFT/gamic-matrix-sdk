@@ -179,7 +179,7 @@ class Client extends MatrixApi {
   })  : syncFilter = syncFilter ??
             Filter(
               room: RoomFilter(
-                state: StateFilter(lazyLoadMembers: true),
+                state: StateFilter(lazyLoadMembers: true, notTypes: [EventTypes.RoomMember]),
               ),
             ),
         importantStateEvents = importantStateEvents ??= {},

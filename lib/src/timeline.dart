@@ -181,7 +181,7 @@ class Timeline {
       direction,
       from: direction == Direction.b ? chunk.prevBatch : chunk.nextBatch,
       limit: historyCount,
-      filter: jsonEncode(StateFilter(lazyLoadMembers: true).toJson()),
+      filter: jsonEncode(StateFilter(lazyLoadMembers: true, notTypes: [EventTypes.RoomMember]).toJson()),
     );
 
     if (resp.end == null) {
@@ -603,7 +603,7 @@ class Timeline {
           Direction.b,
           from: prevBatch,
           limit: requestHistoryCount,
-          filter: jsonEncode(StateFilter(lazyLoadMembers: true).toJson()),
+          filter: jsonEncode(StateFilter(lazyLoadMembers: true, notTypes: [EventTypes.RoomMember]).toJson()),
         );
         for (final matrixEvent in resp.chunk) {
           var event = Event.fromMatrixEvent(matrixEvent, room);
