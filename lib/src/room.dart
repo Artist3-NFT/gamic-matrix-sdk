@@ -1206,7 +1206,7 @@ class Room {
       direction,
       from: prev_batch,
       limit: historyCount,
-      filter: jsonEncode(StateFilter(lazyLoadMembers: true).toJson()),
+      filter: jsonEncode(StateFilter(lazyLoadMembers: true, notTypes: [EventTypes.RoomMember]).toJson()),
     );
 
     if (onHistoryReceived != null) onHistoryReceived();
