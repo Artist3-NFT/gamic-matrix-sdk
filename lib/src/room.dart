@@ -822,6 +822,7 @@ class Room {
 
     syncUpdate.rooms!.join!.values.first.timeline!.events!.first
         .unsigned![fileSendingStatusKey] = FileSendingStatus.uploading.name;
+    await _handleFakeSync(syncUpdate);
     while (uploadResp == null ||
         (uploadThumbnail != null && thumbnailUploadResp == null)) {
       try {
