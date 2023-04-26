@@ -23,7 +23,11 @@ final libcrypto = () {
   if (Platform.isIOS) {
     return DynamicLibrary.process();
   } else if (Platform.isAndroid) {
-    return DynamicLibrary.open('libcrypto.so');
+    try {
+      return DynamicLibrary.open('libcrypto.so');
+    } catch (e) {
+      return DynamicLibrary.process();
+    }
   } else if (Platform.isWindows) {
     return DynamicLibrary.open('libcrypto.dll');
   } else if (Platform.isMacOS) {
