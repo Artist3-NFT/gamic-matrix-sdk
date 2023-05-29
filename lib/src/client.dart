@@ -181,7 +181,7 @@ class Client extends MatrixApi {
               room: RoomFilter(
                 state: StateFilter(lazyLoadMembers: true, notTypes: [EventTypes.RoomMember]),
                 ephemeral: StateFilter(types: ['m.receipt', 'm.typing']),
-                timeline: StateFilter(lazyLoadMembers: true, types: [EventTypes.Message, EventTypes.RoomMember, EventTypes.Reaction, EventTypes.Redaction], limit: 1),
+                timeline: StateFilter(lazyLoadMembers: true, types: [EventTypes.Message, EventTypes.RoomMember, EventTypes.Reaction, EventTypes.Redaction], limit: 3),
               ),
               presence: EventFilter(notTypes: ['m.presence'])
             ),
